@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/01/31 18:56:32 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:11:50 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int main()
 	
 	head = ft_lstnew("hello");
 	bidule1 = ft_lstnew("bidule1");
-	ft_lstadd_back(head, bidule1);
+	head = ft_lstadd_back(head, bidule1);
 	
 	tmp = malloc(sizeof(t_list));
 	if(!tmp)
@@ -76,8 +76,8 @@ int main()
 	{
 		printf("%s\n", (char *)tmp->content);
 		tmp = tmp->next;
-		if(tmp->next != head)
-			printf("%s\n", (char *)tmp->content);
+		// if(tmp->next == head)
+		// 	printf("%s\n", (char *)tmp->content);
 	}
 }
 
