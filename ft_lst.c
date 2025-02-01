@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maxoph <maxoph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/01/31 19:13:34 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:48:10 by maxoph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,46 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
-t_list *ft_lstnew(void *content)
+void ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list *temp;
+	t_list *head;
+	
+	if (lst == NULL || del == NULL)
+		return;
+	head = *lst;
+	while (*lst && (*lst)->next != head)
+	{
+		temp = (*lst)->next;
+		del((*lst)->content);
+		//del((*lst)->value);
+		//del((*lst)->index);
+		free(*lst);
+		*lst = temp;
+	}
+	if (*lst)
+	{
+		del((*lst)->content);
+		//del((*lst)->value);
+		//del((*lst)->index);
+		free(*lst);
+	}
+	*lst = NULL;
+}
+void del(void *content)
+{
+	(void)content;
+	//free(content);
+}
+
+t_list *ft_lstnew(void *value)
 {
 	t_list *new;
 	
 	new = malloc(sizeof(t_list));
 	if(!new)
 		return(NULL);
-	new->content = content;
+	new->content = value;
 	new->next = NULL; // = (*new).next
 	new->prev = NULL;
 	return(new);
@@ -42,43 +74,63 @@ t_list *ft_lstadd_back(t_list *lst, t_list *new)
 	if (!lst)
 		return (new);
 	temp = lst;
-	if(temp->next == NULL) //deuxieme node uniquement
+	if(temp->next == lst) //deuxieme node uniquement
 	{
 		temp->next = new;
 		return(lst);
 	}
-	while(temp->next != lst )
+	while(temp->next != lst && temp->next != NULL)
 	{
 		temp = temp->next;
 	}
 	temp->next = new;
 	new->prev = temp;
 	new->next = lst;
-	// lst->prev = new;
+	lst->prev = new;
 	return(lst);
 }
 
 int main()
 {
 	t_list *head;
-	t_list *bidule1;
+	//t_list *bidule1;
 	t_list *tmp;
-	
+	t_list *i;
+	t_list *j;
+	t_list *k;
+	t_list *l;
 	head = ft_lstnew("hello");
-	bidule1 = ft_lstnew("bidule1");
-	head = ft_lstadd_back(head, bidule1);
+	//bidule1 = ft_lstnew("bidule1");
+	i = ft_lstnew("1node");
+	head = ft_lstadd_back(head, i);
+
+	j = ft_lstnew("2node");
+	head = ft_lstadd_back(head, j);
 	
-	tmp = malloc(sizeof(t_list));
-	if(!tmp)
-		return(0);
+	k = ft_lstnew("3node");
+	head = ft_lstadd_back(head, k);
+	
+	l = ft_lstnew("4node");
+	head = ft_lstadd_back(head, l);
+	
 	tmp = head;
-	while(tmp)
+	while(tmp->next != head)
 	{
-		printf("%s\n", (char *)tmp->content);
+		printf("contenue = %s;", (char *)tmp->content);
+		printf(" prev = %s;", (char *)tmp->prev->content);
+		printf(" next = %s\n", (char *)tmp->next->content);
 		tmp = tmp->next;
-		// if(tmp->next == head)
-		// 	printf("%s\n", (char *)tmp->content);
+		if(tmp->next == head)
+		{
+			printf("contenue = %s;", (char *)tmp->content);
+			printf(" prev = %s;", (char *)tmp->prev->content);
+			printf(" next = %s\n", (char *)tmp->next->content);
+		}
 	}
+	ft_lstclear(&head, del);
+	if (head == NULL)
+		printf("LISTE VIDE!! \n");
+	return(0);
 }
 
 // t_list *ft_lstadd_front(t_list **lst, t_list *new)
@@ -90,10 +142,6 @@ int main()
 	
 // }
 // void ft_lstdelone(t_list *lst, void (*del)(void*))
-// {
-	
-// }
-// void ft_lstclear(t_list **lst, void (*del)(void*))
 // {
 	
 // }
