@@ -6,7 +6,7 @@
 /*   By: maxoph <maxoph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/01 17:01:38 by maxoph           ###   ########.fr       */
+/*   Updated: 2025/02/01 17:38:02 by maxoph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,12 @@ t_list *ft_lstadd_back(t_list *lst, t_list *new)
 	lst->prev = new;
 	return(lst);
 }
+
+void ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	
+}
+
 // t_list *ft_lstadd_front(t_list **lst, t_list *new)
 // {
 	
@@ -155,10 +161,6 @@ int main()
 	return(0);
 }
 
-// void ft_lstdelone(t_list *lst, void (*del)(void*))
-// {
-	
-// }
 
 /* main pour add back*/
 
