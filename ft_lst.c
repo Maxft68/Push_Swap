@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maxoph <maxoph@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/01 17:38:02 by maxoph           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:21:56 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,39 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int			*content;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+// void ft_push(t_list *lst_sent, t_list *lst_to_received)
+// {
+// 	if (!lst_sent)
+// 		return;
+	
+	
+	
+// }
+
+void ft_lstclear(t_list **lst)
 {
 	t_list *temp;
 	t_list *head;
 	
-	if (lst == NULL || del == NULL)
+	if (lst == NULL)
 		return;
 	head = *lst;
 	while (*lst && (*lst)->next != head)
 	{
 		temp = (*lst)->next;
-		del((*lst)->content);
-		//del((*lst)->value);
-		//del((*lst)->index);
 		free(*lst);
 		*lst = temp;
 	}
 	if (*lst)
 	{
-		del((*lst)->content);
-		//del((*lst)->value);
-		//del((*lst)->index);
 		free(*lst);
 	}
 	*lst = NULL;
-}
-void del(void *content)
-{
-	(void)content;
-	//free(content);
 }
 
 int ft_lstsize(t_list *list)
@@ -108,10 +106,6 @@ t_list *ft_lstadd_back(t_list *lst, t_list *new)
 	return(lst);
 }
 
-void ft_lstdelone(t_list *lst, void (*del)(void*))
-{
-	
-}
 
 // t_list *ft_lstadd_front(t_list **lst, t_list *new)
 // {
@@ -128,7 +122,6 @@ int main()
 	t_list *k;
 	t_list *l;
 	head = ft_lstnew("hello");
-	//bidule1 = ft_lstnew("bidule1");
 	i = ft_lstnew("1node");
 	head = ft_lstadd_back(head, i);
 	j = ft_lstnew("2node");
@@ -137,6 +130,22 @@ int main()
 	head = ft_lstadd_back(head, k);
 	l = ft_lstnew("4node");
 	head = ft_lstadd_back(head, l);
+
+	// t_list *head2;
+	// t_list *m;
+	// t_list *n;
+	// t_list *o;
+	// //t_list *p;
+	// head2 = ft_lstnew("pile2");
+	// m = ft_lstnew("coco1");
+	// head2 = ft_lstadd_back(head2, m);
+	// n = ft_lstnew("coco2");
+	// head2 = ft_lstadd_back(head2, n);
+	// o = ft_lstnew("coco3");
+	// head2 = ft_lstadd_back(head2, o);
+	// p = ft_lstnew("coco4");
+	// head2 = ft_lstadd_back(head2, p);
+	
 	tmp = head;
 	while(tmp->next != head)
 	{
@@ -151,13 +160,14 @@ int main()
 			printf(" next = %s\n", (char *)tmp->next->content);
 		}
 	}
-	int nb_liste = ft_lstsize(head);
-	printf("taille de la liste = %d\n", nb_liste);
-	ft_lstclear(&head, del);
+	printf("taille de la liste = %d\n", ft_lstsize(head));
+	ft_lstclear(&head);
+	
 	if (head == NULL)
 		printf("LISTE VIDE!! \n");
-	nb_liste = ft_lstsize(head);
-	printf("taille de la liste = %d\n", nb_liste);
+	printf("taille de la liste2 = %d\n", ft_lstsize(head));
+	
+	//printf("taille de la liste = %d\n", ft_lstsize(head));
 	return(0);
 }
 
