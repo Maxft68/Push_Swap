@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/05 17:39:43 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:35:38 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int ft_lstsize(t_list *list)
 	return (i);
 }
 
-t_list *ft_lstnew(char *the_value, t_list **head, t_list **head2)
+t_list *ft_lstnew(char *the_value)
 {
 	t_list *new;
 	
 	new = malloc(sizeof(t_list));
-	if(!new)
-		return(ft_lstclear(head),ft_lstclear(head2), NULL);
-	new->value = atoi(the_value);
+	if (!new)
+		return(NULL);
+	new->value = atoi(the_value); // a remplacer par mon atoi
 	new->next = NULL; // = (*new).next
 	new->prev = NULL;
 	return(new);
@@ -101,245 +101,89 @@ t_list *ft_lstadd_back(t_list *lst, t_list *new)
 }
 
 
-t_list *ft_lstadd_front(t_list **from, t_list **new_lst)
+t_list *ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *temp_new;
-	t_list *temp_from;
-	
-	temp_new = *new_lst;
-	temp_from = *from;
-	if((*new_lst)->next == *new_lst) //deuxieme node uniquement
+	if (!*lst) //first add
 	{
-		temp_from->prev->next = temp_from->next; //referme la chaine sans push
-		temp_from->next->prev = temp_from->prev; //referme la chaine sans push
-		*from = temp_from->next;
-		temp_from->next = *new_lst;
-		temp_from->prev = *new_lst;
-		(*new_lst)->prev->next = temp_from;
-		(*new_lst)->prev = temp_from;
-		*new_lst = temp_from;
-
-		return(*new_lst);
+		new->next = new;
+		new->prev = new;
+		*lst = new;
+		return(*lst);
 	}
-	else
+	if ((*lst)->next == *lst) // 2nd add
 	{
-		t_list *next_lst;
-		next_lst = (*new_lst)->next;
-		t_list *last;
-		last = (*new_lst)->prev;
-		
-		//from->next = (*new_lst)->next;
-		next_lst->prev->prev = temp_from;
-		
-		
-		
-		
-		
-		*new_lst = temp_from;
+		(*lst)->next = new;
+		(*lst)->prev = new;
+		new->next = *lst;
+		new->prev = *lst;
+		*lst = new;
+		return(*lst);
 	}
-	return(*new_lst);
+	t_list *last;
+	last = (*lst)->prev;
+	last->next = new;
+	new->next = *lst;
+	new->prev = last;
+	(*lst)->prev = new;
+	*lst = new;
+	return(*lst);
 }
 
-// void ft_push(t_list *lst_sent, t_list *lst_to_received)
-// {
-// 	if (!lst_sent)
-// 		return;
-// 	ft_lstadd_front
-	
-	
-// }
-
-t_list *first_push(t_list **lst_sent) // stack B empty
-{	
-	
-	t_list *new_stack;
-	
-	new_stack = NULL;
-	
-	new_stack = *lst_sent;
-	
-	*lst_sent = (*lst_sent)->next;
-	(*lst_sent)->prev->prev->next = *lst_sent; //extraction
-	(*lst_sent)->prev = (*lst_sent)->prev->prev; //extraction
-	new_stack->next = new_stack; //boucle sur sois meme
-	new_stack->prev = new_stack; //boucle sur sois meme
-	return (new_stack);
-}
-int main()
+void ft_del_one(t_list **head)
 {
+	t_list *last_head;
+	last_head = *head;
 	
+	if(!*head)
+		return NULL;
+	
+	
+	
+	return(last_head);
+}
+void print_list(t_list *head)
+{
+	t_list *tmp = head;
+	if (!head)
+		return;
+	while (tmp->next != head)
+	{
+		printf("contenue = %d; prev = %d; next = %d\n", tmp->value, tmp->prev->value, tmp->next->value);
+		tmp = tmp->next;
+	}
+	printf("contenue = %d; prev = %d; next = %d\n", tmp->value, tmp->prev->value, tmp->next->value);
+}
+
+int main(int argc, char **argv)
+{
+	t_list *new_node;
 	t_list *head;
-	//t_list *bidule1;
-	t_list *tmp;
-	t_list *tmp2;
-	t_list *i;
-	t_list *j;
-	t_list *k;
-	t_list *l;
-	t_list *head2;
-
-	head2 = NULL;
-	char *un = "1";
-	char *deux = "2";
-	char *trois = "3";
-	char *quatre = "4";
-	char *cinq = "5";
-	//char *six = "6";
+	int i;
 	
-	
-	head = ft_lstnew(un, &head, &head2);
-	i = ft_lstnew(deux, &head, &head2);
-	head = ft_lstadd_back(head, i);
-	j = ft_lstnew(trois, &head, &head2);
-	head = ft_lstadd_back(head, j);
-	k = ft_lstnew(quatre, &head, &head2);
-	head = ft_lstadd_back(head, k);
-	l = ft_lstnew(cinq, &head, &head2);
-	head = ft_lstadd_back(head, l);
-
-	// t_list *head2;
-	// t_list *m;
-	// t_list *n;
-	// t_list *o;
-	// //t_list *p;
-	// head2 = ft_lstnew("pile2");
-	// m = ft_lstnew("coco1");
-	// head2 = ft_lstadd_back(head2, m);
-	// n = ft_lstnew("coco2");
-	// head2 = ft_lstadd_back(head2, n);
-	// o = ft_lstnew("coco3");
-	// head2 = ft_lstadd_back(head2, o);
-	// p = ft_lstnew("coco4");
-	// head2 = ft_lstadd_back(head2, p);
-	
-	tmp = head;
-	while(tmp->next != head)
+	i = 1;
+	head = NULL;
+	while (i < 6)
 	{
-		printf("contenue = %d;", tmp->value);
-		printf(" prev = %d;",tmp->prev->value);
-		printf(" next = %d\n",tmp->next->value);
-		tmp = tmp->next;
-		if(tmp->next == head)
-		{
-			printf("contenue = %d;", tmp->value);
-			printf(" prev = %d;", tmp->prev->value);
-			printf(" next = %d\n", tmp->next->value);
-		}
+		new_node = ft_lstnew(argv[i]);
+		//head = ft_lstadd_back(head, new_node);
+		head = ft_lstadd_front(&head, new_node);
+		
+		i++;
 	}
-	printf("taille de la liste = %d\n", ft_lstsize(head));
-	
-	if (head == NULL)
-		printf("LISTE VIDE!! \n");
-	
-	
-	head2 = first_push(&head);
-	printf("contenueNEW = %d;", head2->value);
-	printf(" prevNEW = %d;", head2->prev->value);
-	printf(" nextNEW = %d\n", head2->next->value);
-	printf("taille de la liste2 = %d\n", ft_lstsize(head2));
-	printf("taille de la liste = %d\n", ft_lstsize(head));
-	tmp = head;
-	while(tmp->next != head)
+	printf("----Add front----\n");
+	print_list(head);
+	while (i < argc)
 	{
-		printf("contenue = %d;", tmp->value);
-		printf(" prev = %d;",tmp->prev->value);
-		printf(" next = %d\n",tmp->next->value);
-		tmp = tmp->next;
-		if(tmp->next == head)
-		{
-			printf("contenue = %d;", tmp->value);
-			printf(" prev = %d;", tmp->prev->value);
-			printf(" next = %d\n", tmp->next->value);
-		}
+		new_node = ft_lstnew(argv[i]);
+		head = ft_lstadd_back(head, new_node);
+		//head = ft_lstadd_front(&head, new_node);		
+		i++;
 	}
-	ft_lstadd_front(&head, &head2); //2e node dans head2
-	ft_lstadd_front(&head, &head2); //3e node
-	printf("------APRESFRONT------\n");
-	printf("taille de la liste = %d\n", ft_lstsize(head));
-	tmp = head;
-	while(tmp->next != head)
-	{
-		printf("contenuehead = %d;", tmp->value);
-		printf(" prev = %d;",tmp->prev->value);
-		printf(" next = %d\n",tmp->next->value);
-		tmp = tmp->next;
-		if(tmp->next == head)
-		{
-			printf("contenuehead = %d;", tmp->value);
-			printf(" prev = %d;", tmp->prev->value);
-			printf(" next = %d\n", tmp->next->value);
-		}
-	}
-	printf("taille de la liste2 = %d\n", ft_lstsize(head2));
-	tmp2 = head2;
-	while(tmp2->next != head2)
-	{
-		printf("contenue2 = %d;", tmp2->value);
-		printf(" prev = %d;",tmp2->prev->value);
-		printf(" next = %d\n",tmp2->next->value);
-		tmp2 = tmp2->next;
-		if(tmp2->next == head2)
-		{
-			printf("contenue = %d;", tmp2->value);
-			printf(" prev = %d;", tmp2->prev->value);
-			printf(" next = %d\n", tmp2->next->value);
-		}
-	}
+	printf("----Add back----\n");
+	print_list(head);
+	printf("Size de head = %d\n", ft_lstsize(head));
+	
 	ft_lstclear(&head);
-	ft_lstclear(&head2);
+	// ft_lstclear(&head2);
 	return(0);
 }
-
-
-/* main pour add back*/
-
-//int main()
-//{
-	// t_list *toto;
-	// t_list *toto2;
-	// t_list *tmp;
-	
-	// //toto = ft_lstnew(argv[1]);
-	// toto = ft_lstnew("hello");
-	// printf("%s\n", toto->content);
-	// printf("%p\n", toto->next); // = NULL car pas encore creer
-
-	// toto2 = ft_lstnew("hello454");
-	// printf("%s\n", toto2->content);
-	// printf("%p\n", toto2->next);// = NULL car pas encore creer
-	// toto->next = toto2; // defini que le next de toto cest toto2
-	// printf("%p\n", toto2); // = toto->next
-	// printf("%p\n", toto->next); // = toto2
-
-	// printf("%s\n", toto->next->content); // content du next de toto / donc content de toto2
-
-	// tmp = toto; //defini une temp pour pas se deplacer avec toto
-	// while(tmp != NULL) // se deplace dans les nodes tant qu'il y en a 
-	// {
-	// 	printf("%s\n", tmp->content); // = content de toto
-	// 	tmp = tmp->next; // = toto2
-	// }
-	// printf("%s\n", toto->content); // = content de toto
-//}
-
-
-/* main pour add back*/
-/*
-int main()
-{
-	t_list *toto;
-	t_list *tmp;
-	
-	toto = NULL;
-	ft_lstadd_back(&toto, ft_lstnew("hello"));
-	ft_lstadd_back(&toto, ft_lstnew("hello454"));
-	
-	tmp = toto;
-	while(tmp != NULL)
-	{
-		printf("%s\n", tmp->content);
-		tmp = tmp->next;
-	}
-	=
-}
-*/
