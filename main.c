@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 21:36:36 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:41:19 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ int main(int argc, char **argv)
 	swap_a(&head);
 	printf("----Cigarette After Swap----\n");
 	print_list(head);
-	push_a(&head, &head2);
-	printf("----after_push/head----\n");
-	//print_list(head);
-	printf("----after_push/head2----\n");
+	//printf("----after_push/head2----\n");
+	// head2 = ft_lstadd_front(&head2, new_node = ft_lstnew("111"));
+	// ft_lstadd_front(&head2, new_node = ft_lstnew("222"));
+	// push_a(&head, &head2);
 	//print_list(head2);
-	
-	//ft_lstclear(&head);
+	rotate_a(&head);
+	printf("----after_rotate----\n");
+	print_list(head);
+	ft_lstclear(&head);
 	//ft_lstclear(&head2);
 	return(0);
 }

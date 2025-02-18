@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa_pb.c                                            :+:      :+:    :+:   */
+/*   ra_rb_rr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 19:42:27 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 22:10:40 by mdsiurds         ###   ########.fr       */
+/*   Created: 2025/02/18 22:21:07 by mdsiurds          #+#    #+#             */
+/*   Updated: 2025/02/18 22:38:32 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_list **from_b, t_list **to_a)
+void rotate_a(t_list **stack)
 {
-	if (!from_b || !*from_b)
+	if (!*stack || !stack || !(*stack)->next)
 		return;
-	// if (!to_a || !*to_a)
-	// {
-		
-	// }
-	t_list *new_a;
-	new_a = *from_b;
-	ft_del_one(from_b);
-	printf("-------avantPUSH-------\n");
-	print_list(*from_b);
-	ft_lstadd_front(to_a, new_a);
-	printf("-------apresPUSH-------\n");
-	print_list(*from_b);
-	printf("-------head2-------\n");
-	print_list(*to_a);
+	*stack = (*stack)->next;
+}
+
+void rotate_b(t_list **stack)
+{
+	if (!*stack || !stack || !(*stack)->next)
+		return;
+	*stack = (*stack)->next;
+}
+
+void double_rotate(t_list **stack_a, t_list **stack_b)
+{
+	if (!*stack_a || !stack_a || !(*stack_a)->next || !*stack_b || !stack_b ||
+	!(*stack_b)->next)
+		return;
+	rotate_a(stack_a);
+	rotate_b(stack_b);
 }
