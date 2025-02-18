@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/17 17:29:39 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:37:49 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int main(int argc, char **argv)
 	printf("----Add back----\n");
 	print_list(head);
 	printf("Size de head = %d\n", ft_lstsize(head));
-	
+	print_list(head);
+	swap_a(&head);
+	printf("----Cigarette After Swap----\n");
 	print_list(head);
 	ft_lstclear(&head);
 	return(0);

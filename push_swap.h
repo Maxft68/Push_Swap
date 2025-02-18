@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/17 17:25:18 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:37:03 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ typedef struct s_list
 }					t_list;
 
 void	ft_lstclear(t_list **lst);
-void ft_del_one(t_list **head);
+void	ft_del_one(t_list **head);
 int		ft_lstsize(t_list *list);
 t_list	*ft_lstnew(char *the_value);
-t_list *ft_lstadd_back(t_list *lst, t_list *new);
-t_list *ft_lstadd_front(t_list **lst, t_list *new);
-void print_list(t_list *head); // inutile a rendre ??
+t_list	*ft_lstadd_back(t_list *lst, t_list *new);
+t_list	*ft_lstadd_front(t_list **lst, t_list *new);
+void	print_list(t_list *head); // inutile a rendre ??
+void	swap_a(t_list **stack);
+void	swap_b(t_list **stack);
+void	swap_a_b(t_list **stack_a, t_list **stack_b);
 
 //printf
 int		ft_printf(const char *str, ...)__attribute__((format(printf, 1, 2)));
