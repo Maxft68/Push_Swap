@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 16:37:03 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:19:56 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,5 @@ void	print_list(t_list *head); // inutile a rendre ??
 void	swap_a(t_list **stack);
 void	swap_b(t_list **stack);
 void	swap_a_b(t_list **stack_a, t_list **stack_b);
-
-//printf
-int		ft_printf(const char *str, ...)__attribute__((format(printf, 1, 2)));
-int		ft_putchar(char c);
-int		ft_putstr(char *str);
-size_t	ft_strlen(const char *s);
-int		ft_unsigned(unsigned int x);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-int		ft_printf(const char *str, ...);
-int		ft_putnbr(int n);
-int		ft_pointer(unsigned long long x);
-int		ft_hexa(unsigned int x, int capital);
 
 #endif
