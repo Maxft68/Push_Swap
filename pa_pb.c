@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:42:27 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 21:52:09 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:57:35 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	push_a(t_list **from_b, t_list **to_a)
 	print_list(*from_b);
 	ft_lstadd_front(to_a, new_a);
 	printf("-------apresPUSH-------\n");
-	print_list(*from_b)
+	print_list(*from_b);
 }
