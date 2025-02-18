@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 19:19:56 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:25:08 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	print_list(t_list *head); // inutile a rendre ??
 void	swap_a(t_list **stack);
 void	swap_b(t_list **stack);
 void	swap_a_b(t_list **stack_a, t_list **stack_b);
-
 #endif
