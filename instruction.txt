@@ -1,0 +1,13 @@
+
+
+
+
+algo si pas trier
+
+si 2 push_swap
+
+si 3 algo 3
+
+algo pour 5
+
+si + algo normal

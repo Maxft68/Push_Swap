@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 13:43:01 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:39:41 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ int main(int argc, char **argv)
 	reverse_rotate_a(&head);
 	printf("----HEAD APRES REVERSErotate----\n");
 	print_list(head);
-	//rotate_a(&head);
-	//printf("----after_rotate----\n");
-	//print_list(head);
+	printf("\nDans l'ordre 1=OUI 0=NON    %d\n", control(head));
 	ft_lstclear(&head);
 	ft_lstclear(&head2);
 	return(0);
