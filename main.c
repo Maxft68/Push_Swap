@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/18 23:49:03 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:43:01 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,23 @@ int main(int argc, char **argv)
 	// ft_lstadd_front(&head2, new_node = ft_lstnew("222"));
 	push_a(&head, &head2);
 	push_a(&head, &head2);
-	//print_list(head2);
+	push_a(&head, &head2);
+	push_a(&head, &head2);
+	printf("----HEAD 2 APRES PUSH----\n");
+	print_list(head2);
+	printf("----HEAD APRES PUSH----\n");
+	print_list(head);
+	
+	rotate_a(&head);
+	printf("----HEAD APRES rotate----\n");
+	print_list(head);
+	reverse_rotate_a(&head);
+	printf("----HEAD APRES REVERSErotate----\n");
+	print_list(head);
 	//rotate_a(&head);
 	//printf("----after_rotate----\n");
 	//print_list(head);
 	ft_lstclear(&head);
-	//ft_lstclear(&head2);
+	ft_lstclear(&head2);
 	return(0);
 }
