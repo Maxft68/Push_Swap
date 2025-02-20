@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 15:33:22 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:47:21 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	int				value;
+	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
@@ -43,6 +44,8 @@ void	reverse_rotate_a(t_list **stack);
 void	reverse_rotate_b(t_list **stack);
 void	double_reverse_rotate(t_list **stack_a, t_list **stack_b);
 int		control(t_list *head);
+//t_list	*algo_three(t_list **head);
+void	ft_index(t_list **head);
 
 
 #endif

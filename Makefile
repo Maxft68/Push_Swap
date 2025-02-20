@@ -6,13 +6,13 @@
 #    By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 17:23:35 by mdsiurds          #+#    #+#              #
-#    Updated: 2025/02/20 15:37:12 by mdsiurds         ###   ########.fr        #
+#    Updated: 2025/02/20 20:47:27 by mdsiurds         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 SRC = ft_lst.c	sa_sb_ss.c	clear_all.c	main.c	pa_pb.c	ra_rb_rr.c	rra_rrb_rrr.c	\
-control_algo.c
+control_algo.c ft_index.c 
 OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3

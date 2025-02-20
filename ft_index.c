@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   control_algo.c                                     :+:      :+:    :+:   */
+/*   ft_index.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 15:14:26 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 19:39:29 by mdsiurds         ###   ########.fr       */
+/*   Created: 2025/02/20 20:02:38 by mdsiurds          #+#    #+#             */
+/*   Updated: 2025/02/20 20:59:51 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int control(t_list *head)
+void ft_index(t_list **head)
 {
-	t_list *temp;
-	temp = head;
-	while(temp->next != head)
+	t_list *current;
+	t_list *compare;
+
+	current = *head;
+	while (current)
 	{
-		if (temp->value > temp->next->value)
-			return(0);
-		temp = temp->next;
-	}
-	return(1);
+		current->index = 1;
+		compare = *head;
+		while (compare)
+		{
+			if (current->value > compare->value)
+			{
+				current->index++;
+			}
+			compare = compare->next;
+			if (compare == *head)
+				break;
+		}
+		current = current->next;
+		if (current == *head)
+			break;
+	}	
 }
+

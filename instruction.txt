@@ -2,12 +2,16 @@
 
 
 
-algo si pas trier
 
-si 2 push_swap
+
+
 
 si 3 algo 3
 
+
+si 2 push_swap
+
+
 algo pour 5
 
-si + algo normal
+si + algo normal PAPILLON

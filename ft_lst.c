@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/17 18:36:55 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:57:51 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_list *ft_lstnew(char *the_value)
 	if (!new)
 		return(NULL);
 	new->value = atoi(the_value); // a remplacer par mon atoi
+	new->index = 0;
 	new->next = NULL; // = (*new).next
 	new->prev = NULL;
 	return(new);
@@ -103,9 +104,9 @@ void print_list(t_list *head)
 		return;
 	while (tmp->next != head)
 	{
-		printf("contenu = %d; prev = %d; next = %d\n", tmp->value, tmp->prev->value, tmp->next->value);
+		printf("contenu = %d; prev = %d; next = %d; index = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index);
 		tmp = tmp->next;
 	}
-	printf("contenu = %d; prev = %d; next = %d\n", tmp->value, tmp->prev->value, tmp->next->value);
+	printf("contenu = %d; prev = %d; next = %d; index = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index);
 }
 
