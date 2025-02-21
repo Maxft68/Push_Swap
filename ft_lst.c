@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 20:57:51 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:07:19 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,20 @@ t_list *ft_lstnew(char *the_value)
 
 t_list *ft_lstadd_back(t_list *lst, t_list *new)
 {
-	t_list *temp;
-	
+	t_list *last;
+
 	if (!lst)
-		return (new);
-	temp = lst;
-	if(temp->next == lst) //deuxieme node uniquement
 	{
-		temp->next = new;
-		temp->prev = new;
-		temp = lst->prev->next;
-		temp = lst->next->prev;
-		return(temp);
+		new->next = new;
+		new->prev = new;
+		return new;
 	}
-	while(temp->next != lst && temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-	temp->next = new;
-	new->prev = temp;
+	last = lst->prev;
+	last->next = new;
+	new->prev = last;
 	new->next = lst;
 	lst->prev = new;
-	return(lst);
+	return lst;
 }
 
 
@@ -99,14 +91,16 @@ t_list *ft_lstadd_front(t_list **lst, t_list *new)
 
 void print_list(t_list *head)
 {
-	t_list *tmp = head;
+	t_list *tmp;
 	if (!head)
 		return;
-	while (tmp->next != head)
+	tmp = head;
+	while (1)
 	{
 		printf("contenu = %d; prev = %d; next = %d; index = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index);
 		tmp = tmp->next;
+		if (tmp == head)
+			break;
 	}
-	printf("contenu = %d; prev = %d; next = %d; index = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index);
 }
 

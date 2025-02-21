@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 14:47:29 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 21:09:22 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,21 @@ int main(int argc, char **argv)
 		i++;
 	}
 	ft_index(&head);
+	//print_list(head);
+	//ft_lstsize(head);
 	//printf("----Cigarette Before Three----\n");
-	print_list(head);
 	
-	// if (!control(head) && ft_lstsize(head) < 4)
-	// 	algo_three(&head);
-	// algo_five(&head, &head2);
+	// t_list *index_minus = index_min(&head);
+	// printf("----Cigarette after minus----\n");
+	// print_list(index_minus);
 	
-	//printf("----Cigarette After Three----\n");
+	if (!control(head) && ft_lstsize(head) < 4)
+		algo_three(&head);
+	//printf("----Cigarette before five----\n");
+	// if (!control(head))
+	// 	algo_five(&head, &head2);
+	
+	//printf("----Cigarette After five----\n");
 	// printf("----Add back----\n");
 	// print_list(head);
 	// printf("Size de head = %d\n", ft_lstsize(head));
