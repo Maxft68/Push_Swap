@@ -6,11 +6,27 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:44:54 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 01:53:41 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:41:52 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_list *index_min(t_list **head)
+{
+	t_list *current;
+	t_list *index_min;
+	
+	current = (*head)->next;
+	index_min = *head;
+	while(current != *head)
+	{
+		if (current->index > index_min->index)
+			current = current->next;
+		index_min = current;
+	}
+	return(index_min);
+}
 
 void algo_five(t_list **head, t_list **head2)
 {
@@ -19,7 +35,7 @@ void algo_five(t_list **head, t_list **head2)
 	
 	a = *head;
 	n = (*head)->next;
-	if (a->prev->index == 5 && a->prev->prev->index == 4)
+	if (a->index)
 	{
 		// printf("sa\n");
 		// swap_a(head);

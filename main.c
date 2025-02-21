@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 02:03:09 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:46:27 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int main(int argc, char **argv)
 	
 	i = 1;
 	head = NULL;
+	argvsplit = NULL;
 	if (argc == 2)
 	{
 		argvsplit = ft_split(argv[1], ' ');
@@ -55,10 +56,12 @@ int main(int argc, char **argv)
 	}
 	ft_index(&head);
 	//printf("----Cigarette Before Three----\n");
-	//print_list(head);
-	if (!control(head) && ft_lstsize(head) < 4)
-		algo_three(&head);
-	algo_five(&head, &head2);
+	print_list(head);
+	
+	// if (!control(head) && ft_lstsize(head) < 4)
+	// 	algo_three(&head);
+	// algo_five(&head, &head2);
+	
 	//printf("----Cigarette After Three----\n");
 	// printf("----Add back----\n");
 	// print_list(head);

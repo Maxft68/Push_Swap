@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 01:58:06 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:43:26 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	algo_three(t_list **head);
 void	ft_index(t_list **head);
 void	algo_five(t_list **head, t_list **head2);
 void	free_argv(char **argv);
+t_list	*index_min(t_list **head);
 
 
 #endif
