@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:33:15 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 22:51:15 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:31:22 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void algo_three(t_list **head)
 	{
 		printf("sa\n");
 		swap_a(head);
-	}		
+	}
 }

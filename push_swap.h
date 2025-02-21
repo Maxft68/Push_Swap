@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 22:05:08 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 01:58:06 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "./libft/libft/libft.h"
 
 typedef struct s_list
 {
@@ -46,6 +47,8 @@ void	double_reverse_rotate(t_list **stack_a, t_list **stack_b);
 int		control(t_list *head);
 void	algo_three(t_list **head);
 void	ft_index(t_list **head);
+void	algo_five(t_list **head, t_list **head2);
+void	free_argv(char **argv);
 
 
 #endif
