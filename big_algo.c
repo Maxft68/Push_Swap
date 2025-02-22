@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/22 01:45:44 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/22 03:03:40 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	big_algo(t_list **head, t_list **head2)
 	n = (*head)->next;
 	i = 1;
 	
-	while (ft_lstsize(*head) > 3)
+	while (ft_lstsize(*head) > 0)
 	{
 		if (cur->block == i)
 		{
@@ -77,13 +77,13 @@ void	big_algo(t_list **head, t_list **head2)
 		}
 		cur = *head;
 		
-		printf("----HEAD big algo----\n");
-		print_list(*head);
-		printf("----HEAD2 big algo----\n");
-		print_list(*head2);
+		// printf("----HEAD big algo----\n");
+		// print_list(*head);
+		// printf("----HEAD2 big algo----\n");
+		// print_list(*head2);
 	}
 	if (ft_lstsize(*head) == 3 && control(*head) != 1)
 		algo_three(head);
-	printf("----HEAD apres big + 3----\n");
-	print_list(*head);
+	// printf("----HEAD apres big + 3----\n");
+	// print_list(*head);
 }
