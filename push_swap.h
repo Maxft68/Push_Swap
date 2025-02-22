@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 20:08:59 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/22 00:30:57 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
+	int				block;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
@@ -37,7 +38,7 @@ void	swap_a(t_list **stack);
 void	swap_b(t_list **stack);
 void	swap_a_b(t_list **stack_a, t_list **stack_b);
 void	push_a(t_list **from_b, t_list **to_a);
-void	push_b(t_list **from_b, t_list **to_a);
+void	push_b(t_list **from_a, t_list **to_b);
 void	rotate_a(t_list **stack);
 void	rotate_b(t_list **stack);
 void	double_rotate(t_list **stack_a, t_list **stack_b);
@@ -50,7 +51,10 @@ void	ft_index(t_list **head);
 void	algo_five(t_list **head, t_list **head2);
 void	free_argv(char **argv);
 t_list	*index_min(t_list **head);
-int		cost(t_list **head, int index);
+void	big_algo(t_list **head, t_list **head2);
+void	create_block(t_list **head);
+int		cost_index(t_list **head, int nb);
+int		cost_block(t_list **head, int nb);
 
 
 

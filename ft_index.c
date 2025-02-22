@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 20:02:38 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 20:00:59 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 22:11:32 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void ft_index(t_list **head)
 	t_list *compare;
 
 	current = *head;
-	while (current)
+	while (1)
 	{
 		current->index = 1;
 		compare = *head;
-		while (compare)
+		while (1)
 		{
 			if (current->value > compare->value)
 			{

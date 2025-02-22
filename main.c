@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 21:09:22 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/22 01:20:01 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,47 +55,28 @@ int main(int argc, char **argv)
 		i++;
 	}
 	ft_index(&head);
-	//print_list(head);
+	create_block(&head);
 	//ft_lstsize(head);
 	//printf("----Cigarette Before Three----\n");
 	
 	// t_list *index_minus = index_min(&head);
 	// printf("----Cigarette after minus----\n");
 	// print_list(index_minus);
-	
-	if (!control(head) && ft_lstsize(head) < 4)
-		algo_three(&head);
-	//printf("----Cigarette before five----\n");
-	// if (!control(head))
-	// 	algo_five(&head, &head2);
-	
-	//printf("----Cigarette After five----\n");
-	// printf("----Add back----\n");
+	// printf("----HEAD----\n");
 	// print_list(head);
-	// printf("Size de head = %d\n", ft_lstsize(head));
-	// print_list(head);
-	// swap_a(&head);
-	// print_list(head);
-	// //printf("----after_push/head2----\n");
-	// // head2 = ft_lstadd_front(&head2, new_node = ft_lstnew("111"));
-	// // ft_lstadd_front(&head2, new_node = ft_lstnew("222"));
-	// push_a(&head, &head2);
-	// push_a(&head, &head2);
-	// push_a(&head, &head2);
-	// push_a(&head, &head2);
-	
-	// printf("----HEAD 2 APRES PUSH----\n");
+	// printf("----HEAD2----\n");
 	// print_list(head2);
-	// printf("----HEAD APRES PUSH----\n");
-	// print_list(head);
 	
-	// rotate_a(&head);
-	// printf("----HEAD APRES rotate----\n");
+	if (control(head) != 1 && ft_lstsize(head) < 4)
+		algo_three(&head);
+	else if (!control(head) && ft_lstsize(head) < 6)
+		algo_five(&head, &head2);
+	else
+		big_algo(&head, &head2);
+	// printf("----HEAD----\n");
 	// print_list(head);
-	// reverse_rotate_a(&head);
-	// printf("----HEAD APRES REVERSErotate----\n");
-	//print_list(head);
-	// printf("\nDans l'ordre 1=OUI 0=NON    %d\n", control(head));
+	// printf("----HEAD2----\n");
+	// print_list(head2);
 	ft_lstclear(&head);
 	ft_lstclear(&head2);
 	if (argvsplit)

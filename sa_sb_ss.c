@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:23:17 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/19 00:11:26 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/22 01:43:00 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	swap_a(t_list **stack)
 	t_list *last;
 	t_list *third;
 	
-	last = (*stack)->prev;
-	second = (*stack)->next;
 	temp = *stack;
-	third = second->next;
+	second = (*stack)->next;
 	if (!*stack || !stack || !(*stack)->next)
 		return;
 	else if ((*stack)->next->next == *stack) //2ELEMENTS
 		*stack = second;
 	else
 	{
+		third = (*stack)->next->next;
+		last = (*stack)->prev;
 		temp->next = third; // SPECIFIQUE
 		third->prev = temp; // SPECIFIQUE
 		second->next = temp; //toujours pareil
@@ -47,16 +47,16 @@ void	swap_b(t_list **stack)
 	t_list *last;
 	t_list *third;
 	
-	last = (*stack)->prev;
-	second = (*stack)->next;
 	temp = *stack;
-	third = second->next;
+	second = (*stack)->next;
 	if (!*stack || !stack || !(*stack)->next)
 		return;
 	else if ((*stack)->next->next == *stack) //2ELEMENTS
 		*stack = second;
 	else
 	{
+		third = (*stack)->next->next;
+		last = (*stack)->prev;
 		temp->next = third; // SPECIFIQUE
 		third->prev = temp; // SPECIFIQUE
 		second->next = temp; //toujours pareil
@@ -65,8 +65,9 @@ void	swap_b(t_list **stack)
 		temp->prev = second; // always
 		*stack = second; //always
 	}
-	//ft_printf("sb"); ben non sinon double print quand ss.
+	//ft_printf("sa");// ben non sinon double print quand ss.
 }
+
 void	swap_a_b(t_list **stack_a, t_list **stack_b)
 {
 	swap_a(stack_a);

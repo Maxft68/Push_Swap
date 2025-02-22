@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:44:29 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/20 14:53:09 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/22 01:28:25 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void reverse_rotate_b(t_list **stack)
 {
 	if (!*stack || !stack)
 		return;
+	*stack = (*stack)->prev;	
 }
 
 void double_reverse_rotate(t_list **stack_a, t_list **stack_b)

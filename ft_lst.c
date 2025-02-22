@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:41:30 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 17:07:19 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 22:37:14 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int ft_lstsize(t_list *list)
 {
+	//printf("LSTSIZE TU PUES\n");
 	t_list *temp;
 	temp = list;
 	int i;
@@ -37,6 +38,7 @@ t_list *ft_lstnew(char *the_value)
 		return(NULL);
 	new->value = atoi(the_value); // a remplacer par mon atoi
 	new->index = 0;
+	new->block = 0;
 	new->next = NULL; // = (*new).next
 	new->prev = NULL;
 	return(new);
@@ -97,7 +99,7 @@ void print_list(t_list *head)
 	tmp = head;
 	while (1)
 	{
-		printf("contenu = %d; prev = %d; next = %d; index = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index);
+		printf("contenu = %d; prev = %d; next = %d; index = %d; block = %d\n", tmp->value, tmp->prev->value, tmp->next->value, tmp->index, tmp->block);
 		tmp = tmp->next;
 		if (tmp == head)
 			break;

@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:23:05 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/17 17:23:08 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/21 22:56:20 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,44 @@ void ft_del_one(t_list **head)
 	free(old_head);
 	old_head = NULL;
 }
-void ft_lstclear(t_list **lst)
-{
-	t_list *temp;
-	t_list *head;
+// void ft_lstclear(t_list **lst)
+// {
+// 	t_list *temp;
+// 	t_list *head;
 	
-	if (lst == NULL)
+// 	if (lst == NULL)
+// 		return;
+// 	head = *lst;
+// 	while (*lst && (*lst)->next != head)
+// 	{
+// 		temp = (*lst)->next;
+// 		free(*lst);
+// 		*lst = temp;
+// 	}
+// 	if (*lst)
+// 	{
+// 		free(*lst);
+// 	}
+// 	*lst = NULL;
+// }
+void ft_lstclear(t_list **head) //test
+{
+	t_list *current;
+	t_list *tmp;
+	t_list *a;
+
+	if (!head || !(*head))
 		return;
-	head = *lst;
-	while (*lst && (*lst)->next != head)
+	a = *head;
+	while (a->next != *head)
+		a = a->next;
+	a->next = NULL;
+	current = *head;
+	while (current)
 	{
-		temp = (*lst)->next;
-		free(*lst);
-		*lst = temp;
+		tmp = current->next;
+		free(current);
+		current = tmp;
 	}
-	if (*lst)
-	{
-		free(*lst);
-	}
-	*lst = NULL;
+	*head = NULL;
 }
