@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/22 01:20:01 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:43:33 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,9 @@ int main(int argc, char **argv)
 	{
 		new_node = ft_lstnew(argv[i]);
 		head = ft_lstadd_back(head, new_node);
-		//head = ft_lstadd_front(&head, new_node);		
 		i++;
 	}
 	ft_index(&head);
-	create_block(&head);
-	//ft_lstsize(head);
-	//printf("----Cigarette Before Three----\n");
-	
-	// t_list *index_minus = index_min(&head);
-	// printf("----Cigarette after minus----\n");
-	// print_list(index_minus);
 	// printf("----HEAD----\n");
 	// print_list(head);
 	// printf("----HEAD2----\n");
@@ -71,12 +63,10 @@ int main(int argc, char **argv)
 		algo_three(&head);
 	else if (!control(head) && ft_lstsize(head) < 6)
 		algo_five(&head, &head2);
-	else
-		big_algo(&head, &head2);
-	// printf("----HEAD----\n");
-	// print_list(head);
-	// printf("----HEAD2----\n");
-	// print_list(head2);
+	else if (!control(head) && ft_lstsize(head) >= 6 && ft_lstsize(head) < 151)
+		big_algo(&head, &head2, create_block(&head, 3.5));// 3.5!! pour 100 / 8.6!! pour 500 
+	else if (!control(head) && ft_lstsize(head) >= 111)
+		big_algo(&head, &head2, create_block(&head, 8.6));//8.3 = 25/8.5 = 30/8.4= 20/8.6 = 11/10 000/8.7=12/ 9 = 20
 	ft_lstclear(&head);
 	ft_lstclear(&head2);
 	if (argvsplit)

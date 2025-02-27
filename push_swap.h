@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/22 00:30:57 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:44:21 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_list
 	int				value;
 	int				index;
 	int				block;
+	int				mid_block;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
@@ -51,10 +52,11 @@ void	ft_index(t_list **head);
 void	algo_five(t_list **head, t_list **head2);
 void	free_argv(char **argv);
 t_list	*index_min(t_list **head);
-void	big_algo(t_list **head, t_list **head2);
-void	create_block(t_list **head);
+void	big_algo(t_list **head, t_list **head2, int block_size);
+int		create_block(t_list **head, float nb_blocks);
 int		cost_index(t_list **head, int nb);
 int		cost_block(t_list **head, int nb);
+int		cost_moves(t_list **head, int target);
 
 
 
