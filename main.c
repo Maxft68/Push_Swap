@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/27 20:43:33 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:52:34 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,13 @@ int main(int argc, char **argv)
 		i++;
 	}
 	ft_index(&head);
-	// printf("----HEAD----\n");
-	// print_list(head);
-	// printf("----HEAD2----\n");
-	// print_list(head2);
-	
 	if (control(head) != 1 && ft_lstsize(head) < 4)
 		algo_three(&head);
 	else if (!control(head) && ft_lstsize(head) < 6)
 		algo_five(&head, &head2);
 	else if (!control(head) && ft_lstsize(head) >= 6 && ft_lstsize(head) < 151)
 		big_algo(&head, &head2, create_block(&head, 3.5));// 3.5!! pour 100 / 8.6!! pour 500 
-	else if (!control(head) && ft_lstsize(head) >= 111)
+	else if (!control(head) && ft_lstsize(head) >= 151)
 		big_algo(&head, &head2, create_block(&head, 8.6));//8.3 = 25/8.5 = 30/8.4= 20/8.6 = 11/10 000/8.7=12/ 9 = 20
 	ft_lstclear(&head);
 	ft_lstclear(&head2);

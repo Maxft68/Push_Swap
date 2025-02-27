@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/27 20:38:09 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:48:40 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,6 @@
 // 			break;
 // 	}
 // }
-
-int create_block(t_list **head, float nb_blocks) // fonctionelle !! new
-{
-	t_list *cur;
-	int size;
-	int block_size;
-	int i;
-	
-	cur = *head;
-	i = 0;
-	size = ft_lstsize(*head);
-	block_size = (size - 3) / nb_blocks;
-	cur = *head;
-	while (i < 10)
-	{
-		while (1)
-		{
-			if (cur->index > size - 3) // sauf trois plus gros index
-				cur->block = 0;
-			else if (cur->index <= (block_size * (i + 1)) && cur->index > (block_size * i))
-				cur->block = i + 1;
-			cur = cur->next;
-			if (cur == *head)
-				break;
-		}
-		i++;
-	}
-	return(block_size);
-}
-
 
 int create_block(t_list **head, float nb_blocks) // fonctionelle !! new
 {
