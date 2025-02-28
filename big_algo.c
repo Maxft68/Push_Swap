@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 10:08:42 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 10:26:14 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 	int s = ft_lstsize(*head2);
 	int cost_s;
 	int cost_s_min1;
-	cost_s = cost_moves(head, s);
-	cost_s_min1 = cost_moves(head, (s - 1));
 	
 	while(ft_lstsize(*head2) != 0)
 	{
