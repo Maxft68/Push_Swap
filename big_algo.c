@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 11:59:57 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 12:04:19 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ Sorts number > 5 - Move to A
 void	big_algo_back_to_head(t_list **head, t_list **head2)
 {
 	t_list *cur;
-	int s = ft_lstsize(*head2);
+	int s;
 	int cost_s;
 	int cost_s_min1;
 	
+	s = ft_lstsize(*head2);
 	while(ft_lstsize(*head2) != 0)
 	{
 		cost_s = cost_moves(head, s);
@@ -101,9 +102,7 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 				if (cost_index(head2, s) == 1)
 					rotate_b(head2, 1);
 				else if (cost_index(head2, s) == 0)
-				{
 					reverse_rotate_b(head2, 1);
-				}
 				else
 					break;
 				cur = *head2;
