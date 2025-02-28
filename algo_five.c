@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:44:54 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/22 03:03:37 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 11:21:03 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,17 @@ void algo_five(t_list **head, t_list **head2)
 	{
 		if (a == min)
 		{
-			printf("pb\n");
-			push_b(head, head2);
+			push_b(head, head2, 1);
 			min = index_min(head);
 		}
 		else if (cost_index(head, min->index) == 1)
-		{
-			printf("ra\n");
-			rotate_a(head);
-		}
+			rotate_a(head, 1);
 		else
-		{
-			printf("rra\n");
-			reverse_rotate_a(head);
-		}
+			reverse_rotate_a(head, 1);
 		a = *head;
 	}
 	if (control(*head) != 1)
 		algo_three(head);
-	printf("pa\n");
-	push_a(head2, head);
-	printf("pa\n");
-	push_a(head2, head);
+	push_a(head2, head, 1);
+	push_a(head2, head, 1);
 }

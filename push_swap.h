@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 10:09:11 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 11:38:37 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ t_list	*ft_lstnew(char *the_value);
 t_list	*ft_lstadd_back(t_list *lst, t_list *new);
 t_list	*ft_lstadd_front(t_list **lst, t_list *new);
 void	print_list(t_list *head); // inutile a rendre ??
-void	swap_a(t_list **stack);
-void	swap_b(t_list **stack);
-void	swap_a_b(t_list **stack_a, t_list **stack_b);
-void	push_a(t_list **from_b, t_list **to_a);
-void	push_b(t_list **from_a, t_list **to_b);
-void	rotate_a(t_list **stack);
-void	rotate_b(t_list **stack);
-void	double_rotate(t_list **stack_a, t_list **stack_b);
-void	reverse_rotate_a(t_list **stack);
-void	reverse_rotate_b(t_list **stack);
-void	double_reverse_rotate(t_list **stack_a, t_list **stack_b);
+void	swap_a(t_list **stack, int print_sa);
+void	swap_b(t_list **stack, int print_sb);
+void	swap_a_b(t_list **stack_a, t_list **stack_b, int print_ss);
+void	push_a(t_list **from_b, t_list **to_a, int print_pa);
+void	push_b(t_list **from_a, t_list **to_b, int print_pb);
+void	rotate_a(t_list **stack, int print_ra);
+void	rotate_b(t_list **stack, int print_rb);
+void	double_rotate(t_list **stack_a, t_list **stack_b, int print_rr);
+void	reverse_rotate_a(t_list **stack, int print_rra);
+void	reverse_rotate_b(t_list **stack, int print_rrb);
+void	dual_reverse_rotate(t_list **stack_a, t_list **stack_b, int print_rrr);
 int		control(t_list *head);
 void	algo_three(t_list **head);
 void	ft_index(t_list **head);

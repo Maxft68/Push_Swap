@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:42:27 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/22 00:30:38 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 11:20:25 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*extract_node(t_list **from)
 	return (temp);
 }
 
-void	push_a(t_list **from_b, t_list **to_a)
+void	push_a(t_list **from_b, t_list **to_a, int print_pa)
 {
 	if (!from_b || !*from_b)
 		return;
@@ -49,8 +49,10 @@ void	push_a(t_list **from_b, t_list **to_a)
 		(*to_a)->prev = new_a;
 	}
 	*to_a = new_a;
+	if (print_pa)
+		printf("pa\n");
 }
-void	push_b(t_list **from_a, t_list **to_b)
+void	push_b(t_list **from_a, t_list **to_b, int print_pb)
 {
 	if (!from_a || !*from_a)
 		return;
@@ -69,4 +71,6 @@ void	push_b(t_list **from_a, t_list **to_b)
 		(*to_b)->prev = new_a;
 	}
 	*to_b = new_a;
+	if (print_pb)
+		printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 10:26:14 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 11:59:57 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,16 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 	{
 		if (cur->block == i)
 		{
-			printf("pb\n");
-			push_b(head, head2);
+			push_b(head, head2, 1);
 			if (cur->index <= ((i - 1) * block_size) + 1 + (block_size / 2))
-			{
-				printf("rb\n");
-				rotate_b(head2);
-			}
+				rotate_b(head2, 1);
 		}
 		else if (cost_block(head, i) == -1)
 			i++;
 		else if (cost_block(head, i) == 1)
-		{
-			printf("ra\n");
-			rotate_a(head);
-		}
+			rotate_a(head, 1);
 		else
-		{
-			printf("rra\n");
-			reverse_rotate_a(head);
-		}
+			reverse_rotate_a(head, 1);
 		cur = *head;
 	}
 	if (ft_lstsize(*head) == 3 && control(*head) != 1)
@@ -100,61 +90,40 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 		cur = *head2;
 		if (cur->index == s)
 		{
-			printf("pa\n");
-			push_a(head2, head);
+			push_a(head2, head, 1);
 			s--;
 		}
 		else if (cur->index == (s - 1))
 		{
-			printf("pa\n");
-			push_a(head2, head);
+			push_a(head2, head, 1);
 			while((*head2)->index != s && ft_lstsize(*head2) > 0)
 			{
 				if (cost_index(head2, s) == 1)
-				{
-					printf("rb\n");
-					rotate_b(head2);
-				}
+					rotate_b(head2, 1);
 				else if (cost_index(head2, s) == 0)
 				{
-					printf("rrb\n");
-					reverse_rotate_b(head2);
+					reverse_rotate_b(head2, 1);
 				}
 				else
 					break;
 				cur = *head2;
 			}
-			printf("pa\n");
-			push_a(head2, head);
+			push_a(head2, head, 1);
 			cur = *head2;
-			printf("sa\n");
-			swap_a(head);
-			s--;
-			s--;
+			swap_a(head, 1);
+			s = s - 2;
 		}
 		else if (cost_s > cost_s_min1) // si s-1 est plus rapidement trouver
 		{
 			if (cost_index(head2, (s - 1)) == 1)
-			{
-				printf("rb\n");
-				rotate_b(head2);
-			}
+				rotate_b(head2, 1);
 			else
-			{
-				printf("rrb\n");
-				reverse_rotate_b(head2);
-			}
+				reverse_rotate_b(head2, 1);
 		}
 		else if (cost_index(head2, s) == 1) // si s est plus rapidement trouver
-		{
-			printf("rb\n");
-			rotate_b(head2);
-		}
+			rotate_b(head2, 1);
 		else
-		{
-			printf("rrb\n");
-			reverse_rotate_b(head2);
-		}
+			reverse_rotate_b(head2, 1);
 		cur = *head2;
 	}
 }
