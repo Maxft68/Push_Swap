@@ -6,58 +6,34 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/27 20:48:40 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 10:08:42 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	create_block(t_list **head)
-// {
-// 	t_list *cur;
-// 	int size;
-// 	int size_block;
-	
-// 	cur = *head;
-// 	size = ft_lstsize(*head);
-// 	size_block = size / 5; //pour 100nb pour commencer
-// 	while (1)
-// 	{
-// 		if (cur->index <= size_block)
-// 			cur->block = 1;
-// 		else if (cur->index <= (size_block * 2) && cur->index > (size_block))
-// 			cur->block = 2;
-// 		else if (cur->index <= (size_block * 3) && cur->index > (size_block * 2))
-// 			cur->block = 3;
-// 		else if (cur->index <= (size_block * 4) && cur->index > (size_block * 3))
-// 			cur->block = 4;
-// 		else
-// 			cur->block = 5;
-// 		cur = cur->next;
-// 		if (cur == *head)
-// 			break;
-// 	}
-// }
-
-int create_block(t_list **head, float nb_blocks) // fonctionelle !! new
+/*******************************************************************************
+Create blocks - This function cuts the big list into small groups.
+*******************************************************************************/
+int create_block(t_list **head, float nb_blocks)
 {
 	t_list *cur;
 	int size;
-	int block_size;
+	int b_size;
 	int i;
 	
 	cur = *head;
 	i = 0;
 	size = ft_lstsize(*head);
-	block_size = (size - 3) / nb_blocks;
+	b_size = (size - 3) / nb_blocks;
 	cur = *head;
 	while (i < 10)
 	{
 		while (1)
 		{
-			if (cur->index > size - 3) // sauf trois plus gros index
+			if (cur->index > size - 3)
 				cur->block = 0;
-			else if (cur->index <= (block_size * (i + 1)) && cur->index > (block_size * i))
+			else if (cur->index <= b_size * (i + 1) && cur->index > b_size * i)
 				cur->block = i + 1;
 			cur = cur->next;
 			if (cur == *head)
@@ -65,9 +41,11 @@ int create_block(t_list **head, float nb_blocks) // fonctionelle !! new
 		}
 		i++;
 	}
-	return(block_size);
+	return(b_size);
 }
-
+/*******************************************************************************
+Sorts number > 5 - Move to B
+*******************************************************************************/
 void	big_algo(t_list **head, t_list **head2, int block_size)
 {
 	t_list *cur;
@@ -87,10 +65,8 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 				rotate_b(head2);
 			}
 		}
-		else if (cost_block(head, i) == -1) //pas trouve
-		{
+		else if (cost_block(head, i) == -1)
 			i++;
-		}
 		else if (cost_block(head, i) == 1)
 		{
 			printf("ra\n");
@@ -103,9 +79,16 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 		}
 		cur = *head;
 	}
-	if (ft_lstsize(*head) == 3 && control(*head) != 1) // ou algo 3 ??
+	if (ft_lstsize(*head) == 3 && control(*head) != 1)
 		algo_three(head);
-									///RETOUR DANS A
+}
+
+/*******************************************************************************
+Sorts number > 5 - Move to A
+*******************************************************************************/
+void	big_algo_back_to_head(t_list **head, t_list **head2)
+{
+	t_list *cur;
 	int s = ft_lstsize(*head2);
 	int cost_s;
 	int cost_s_min1;
@@ -140,14 +123,12 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 					reverse_rotate_b(head2);
 				}
 				else
-				{
 					break;
-				}
-				cur = *head2; // probleme ici ?
+				cur = *head2;
 			}
 			printf("pa\n");
 			push_a(head2, head);
-			cur = *head2; // probleme ici ?
+			cur = *head2;
 			printf("sa\n");
 			swap_a(head);
 			s--;
@@ -157,20 +138,17 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 		{
 			if (cost_index(head2, (s - 1)) == 1)
 			{
-				//printf("LA JE PREFERE ????????????????????????");
 				printf("rb\n");
 				rotate_b(head2);
 			}
 			else
 			{
-				//printf("LA JE PREFERE AUSSI ????????????????????????");
 				printf("rrb\n");
 				reverse_rotate_b(head2);
 			}
 		}
 		else if (cost_index(head2, s) == 1) // si s est plus rapidement trouver
 		{
-			//printf("ICI ????????????????????????");
 			printf("rb\n");
 			rotate_b(head2);
 		}
