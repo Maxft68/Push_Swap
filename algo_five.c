@@ -6,18 +6,18 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:44:54 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 11:21:03 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:27:56 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void algo_five(t_list **head, t_list **head2)
+void	algo_five(t_list **head, t_list **head2)
 {
-	t_list *a;
-	t_list *n;
-	t_list *min;
-	
+	t_list	*a;
+	t_list	*n;
+	t_list	*min;
+
 	a = *head;
 	n = (*head)->next;
 	min = index_min(head);

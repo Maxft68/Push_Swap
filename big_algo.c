@@ -6,22 +6,23 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 15:04:44 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:33:55 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*******************************************************************************
-Create blocks - This function cuts the big list into small groups.
+Create blocks - This function cut the big list into small groups.
 *******************************************************************************/
-int create_block(t_list **head, float nb_blocks)
+
+int	create_block(t_list **head, float nb_blocks)
 {
-	t_list *cur;
-	int size;
-	int b_size;
-	int i;
-	
+	t_list	*cur;
+	int		size;
+	int		b_size;
+	int		i;
+
 	cur = *head;
 	i = 0;
 	size = ft_lstsize(*head);
@@ -37,20 +38,21 @@ int create_block(t_list **head, float nb_blocks)
 				cur->block = i + 1;
 			cur = cur->next;
 			if (cur == *head)
-				break;
+				break ;
 		}
 		i++;
 	}
-	return(b_size);
+	return (b_size);
 }
 /*******************************************************************************
 Sorts number > 5 - Move to B
 *******************************************************************************/
+
 void	big_algo(t_list **head, t_list **head2, int block_size)
 {
-	t_list *cur;
-	int i;
-	
+	t_list	*cur;
+	int		i;
+
 	cur = *head;
 	i = 1;
 	while (ft_lstsize(*head) > 3)
@@ -73,18 +75,21 @@ void	big_algo(t_list **head, t_list **head2, int block_size)
 		algo_three(head);
 }
 
-void inter_function_big_algo(t_list **head, t_list **head2, int *s)
+/*******************************************************************************
+If big-1 is on the head
+*******************************************************************************/
+void	inter_function_big_algo(t_list **head, t_list **head2, int *s)
 {
 	{
 		push_a(head2, head, 1);
-		while((*head2)->index != *s && ft_lstsize(*head2) > 0)
+		while ((*head2)->index != *s && ft_lstsize(*head2) > 0)
 		{
 			if (cost_index(head2, *s) == 1)
 				rotate_b(head2, 1);
 			else if (cost_index(head2, *s) == 0)
 				reverse_rotate_b(head2, 1);
 			else
-				break;
+				break ;
 		}
 		push_a(head2, head, 1);
 		swap_a(head, 1);
@@ -93,14 +98,14 @@ void inter_function_big_algo(t_list **head, t_list **head2, int *s)
 }
 
 /*******************************************************************************
-Sorts number > 5 - Move to A
+Sorts number > 5 - If big or big-1 is better push the better
 *******************************************************************************/
 void	big_algo_back_to_head(t_list **head, t_list **head2)
 {
-	t_list *cur;
-	int s;
-	
-	while(ft_lstsize(*head2) != 0)
+	t_list	*cur;
+	int		s;
+
+	while (ft_lstsize(*head2) != 0)
 	{
 		s = ft_lstsize(*head2);
 		cur = *head2;
@@ -108,14 +113,14 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 			push_a(head2, head, 1);
 		else if (cur->index == (s - 1))
 			inter_function_big_algo(head, head2, &s);
-		else if (cost_moves(head, s) > cost_moves(head, (s - 1))) // si s-1 est plus rapidement trouver
+		else if (cost_moves(head, s) > cost_moves(head, (s - 1)))
 		{
 			if (cost_index(head2, (s - 1)) == 1)
 				rotate_b(head2, 1);
 			else
 				reverse_rotate_b(head2, 1);
 		}
-		else if (cost_index(head2, s) == 1) // si s est plus rapidement trouver
+		else if (cost_index(head2, s) == 1)
 			rotate_b(head2, 1);
 		else
 			reverse_rotate_b(head2, 1);

@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:22:31 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 14:52:50 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:01:58 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ int		cost_block(t_list **head, int nb);
 int		cost_moves(t_list **head, int target);
 void	big_algo_back_to_head(t_list **head, t_list **head2);
 void	inter_function_big_algo(t_list **head, t_list **head2, int *s);
+void	clear_all_all(t_list **head, t_list **head2, char **argvsplit);
+
 
 #endif

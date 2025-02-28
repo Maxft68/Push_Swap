@@ -6,28 +6,45 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:23:05 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/21 22:56:20 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:07:16 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_del_one(t_list **head)
+void    free_argv(char **argv)
 {
-	t_list *old_head;
+	int    i;
+
+	if (!argv)
+		return ;
+	i = 0;
+	while (argv[i])
+	{
+		free(argv[i]);
+		argv[i] = NULL;
+		i++;
+	}
+	free(argv);
+	argv = NULL;
+}
+
+void	ft_del_one(t_list **head)
+{
+	t_list	*old_head;
+	t_list	*prev;
+	t_list	*next;
+
 	old_head = *head;
-	t_list *prev;
-	t_list *next;
-	
-	if(!*head || !head)
-		return;
+	if (!*head || !head)
+		return ;
 	next = (*head)->next;
 	prev = (*head)->prev;
-	if(*head == (*head)->next)
+	if (*head == (*head)->next)
 	{
 		free(*head);
 		*head = NULL;
-		return;
+		return ;
 	}
 	else
 	{
@@ -38,34 +55,15 @@ void ft_del_one(t_list **head)
 	free(old_head);
 	old_head = NULL;
 }
-// void ft_lstclear(t_list **lst)
-// {
-// 	t_list *temp;
-// 	t_list *head;
-	
-// 	if (lst == NULL)
-// 		return;
-// 	head = *lst;
-// 	while (*lst && (*lst)->next != head)
-// 	{
-// 		temp = (*lst)->next;
-// 		free(*lst);
-// 		*lst = temp;
-// 	}
-// 	if (*lst)
-// 	{
-// 		free(*lst);
-// 	}
-// 	*lst = NULL;
-// }
-void ft_lstclear(t_list **head) //test
+
+void	ft_lstclear(t_list **head)
 {
-	t_list *current;
-	t_list *tmp;
-	t_list *a;
+	t_list	*current;
+	t_list	*tmp;
+	t_list	*a;
 
 	if (!head || !(*head))
-		return;
+		return ;
 	a = *head;
 	while (a->next != *head)
 		a = a->next;
@@ -78,4 +76,13 @@ void ft_lstclear(t_list **head) //test
 		current = tmp;
 	}
 	*head = NULL;
+}
+
+void clear_all_all(t_list **head, t_list **head2, char **argvsplit)
+{
+	ft_lstclear(head);
+	ft_lstclear(head2);
+	if (argvsplit)
+		free_argv(argvsplit);
+	return;
 }

@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:23:17 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 11:15:44 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:02:47 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,44 @@
 
 void	swap_a(t_list **stack, int print_sa)
 {
-	t_list *temp;
-	t_list *second;
-	t_list *last;
-	t_list *third;
-	
-	temp = *stack;
+	t_list	*first;
+	t_list	*second;
+	t_list	*last;
+	t_list	*third;
+
+	first = *stack;
 	second = (*stack)->next;
 	if (!*stack || !stack || !(*stack)->next)
-		return;
-	else if ((*stack)->next->next == *stack) //2ELEMENTS
+		return ;
+	else if ((*stack)->next->next == *stack)
 		*stack = second;
 	else
 	{
 		third = (*stack)->next->next;
-		last = (*stack)->prev;
-		temp->next = third; // SPECIFIQUE
-		third->prev = temp; // SPECIFIQUE
-		second->next = temp; //toujours pareil
-		last->next = second; //toujours pareil
-		second->prev = last; // always same
-		temp->prev = second; // always
-		*stack = second; //always
+		last = (*stack)->prev; //
+		first->next = third;
+		third->prev = first; //
+		second->next = first;
+		last->next = second; //
+		second->prev = last; //
+		first->prev = second; //
+		*stack = second;
 	}
 	if (print_sa)
-		printf("sa\n");
+		printf("sa\n"); //ajouter mon printf
 }
 
 void	swap_b(t_list **stack, int print_sb)
 {
-	t_list *temp;
-	t_list *second;
-	t_list *last;
-	t_list *third;
-	
+	t_list	*temp;
+	t_list	*second;
+	t_list	*last;
+	t_list	*third;
+
 	temp = *stack;
 	second = (*stack)->next;
 	if (!*stack || !stack || !(*stack)->next)
-		return;
+		return ;
 	else if ((*stack)->next->next == *stack)
 		*stack = second;
 	else

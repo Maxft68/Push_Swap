@@ -6,28 +6,11 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:29:09 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 11:44:55 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:09:24 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    free_argv(char **argv)
-{
-	int    i;
-
-	if (!argv)
-		return ;
-	i = 0;
-	while (argv[i])
-	{
-		free(argv[i]);
-		argv[i] = NULL;
-		i++;
-	}
-	free(argv);
-	argv = NULL;
-}
 
 int main(int argc, char **argv)
 {
@@ -50,6 +33,12 @@ int main(int argc, char **argv)
 	while (argv[i])
 	{
 		new_node = ft_lstnew(argv[i]);
+		if (!new_node)
+		{
+			ft_lstclear(&head);
+			ft_lstclear(&head2);
+			exit(EXIT_FAILURE);
+		}
 		head = ft_lstadd_back(head, new_node);
 		i++;
 	}
@@ -68,9 +57,7 @@ int main(int argc, char **argv)
 		big_algo(&head, &head2, create_block(&head, 8.6));
 		big_algo_back_to_head(&head, &head2);
 	}
-	ft_lstclear(&head);
-	ft_lstclear(&head2);
-	if (argvsplit)
-		free_argv(argvsplit);
-	return(0);	
+	clear_all_all(&head, &head2, argvsplit);
+	return(0);
 }
+
