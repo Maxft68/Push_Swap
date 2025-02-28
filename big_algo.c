@@ -6,7 +6,7 @@
 /*   By: mdsiurds <mdsiurds@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 21:16:01 by mdsiurds          #+#    #+#             */
-/*   Updated: 2025/02/28 12:04:19 by mdsiurds         ###   ########.fr       */
+/*   Updated: 2025/02/28 12:19:47 by mdsiurds         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,10 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 {
 	t_list *cur;
 	int s;
-	int cost_s;
-	int cost_s_min1;
 	
 	s = ft_lstsize(*head2);
 	while(ft_lstsize(*head2) != 0)
 	{
-		cost_s = cost_moves(head, s);
-		cost_s_min1 = cost_moves(head, (s - 1));
 		cur = *head2;
 		if (cur->index == s)
 		{
@@ -105,14 +101,12 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 					reverse_rotate_b(head2, 1);
 				else
 					break;
-				cur = *head2;
 			}
 			push_a(head2, head, 1);
-			cur = *head2;
 			swap_a(head, 1);
 			s = s - 2;
 		}
-		else if (cost_s > cost_s_min1) // si s-1 est plus rapidement trouver
+		else if (cost_moves(head, s) > cost_moves(head, (s - 1))) // si s-1 est plus rapidement trouver
 		{
 			if (cost_index(head2, (s - 1)) == 1)
 				rotate_b(head2, 1);
@@ -123,6 +117,5 @@ void	big_algo_back_to_head(t_list **head, t_list **head2)
 			rotate_b(head2, 1);
 		else
 			reverse_rotate_b(head2, 1);
-		cur = *head2;
 	}
 }
